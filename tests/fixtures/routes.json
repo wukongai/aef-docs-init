@@ -1,0 +1,10 @@
+{
+  "产品调研": "docs/product/research/",
+  "技术选型实验基线": "docs/engineering/research/",
+  "日报": "docs/project/logs/daily/",
+  "团队学习": "docs/knowledge/team/learning/",
+  "用户指南": "docs/knowledge/users/guides/",
+  "发布记录": "docs/product/releases/0.1.0/release.md",
+  "拟议规格": "docs/engineering/changes/search/spec.md",
+  "生效规格": "docs/engineering/specs/search/spec.md"
+}

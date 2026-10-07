@@ -1,0 +1,19 @@
+name: aef-docs-init
+version: 0.1.0
+scope: project-only-or-explicit-user-install
+inputs: [target, agent, document_kind, instance_name, approval_fingerprint]
+outputs: [full_static_docs_tree, directory_index, machine_contract, routing_rules, route_result, check_report]
+state: [preview, applied, checked, route, path_valid, blocked]
+stops: [ambiguous_kind, missing_name, missing_approval, stale_plan, conflicting_file, unsafe_path, write_failure]
+delegates: []
+forbidden: [business_scaffold, overwrite, automatic_migration, automatic_gate_approval, credential_storage, network, automatic_install, publish]
+approvals:
+  initialization: explicit_user_approval_for_same_preview
+  formal_creation: native_plan_approval
+  publication: separate_owner_approval
+scripts: [scripts/docs_init.py, scripts/layout.py, scripts/safe_files.py]
+tests: [tests/test_docs.py, tests/self-test.json]
+evaluation:
+  deterministic: fixture_and_portability_tests
+  real_task: pending
+  utility_claim: false
