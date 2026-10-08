@@ -1,6 +1,6 @@
 # AEF Docs Init
 
-独立的项目文档初始化、历史资料迁移与落点查询 Skill。源码版本：**0.3.0**，独立 Release ZIP 尚未发布。默认分支安装命令读取当前源码；下文固定 v0.1.0 的标签与下载链接仍为旧版，不含迁移功能与本轮分类简化。
+独立的项目文档初始化、历史资料迁移与落点查询 Skill。当前版本：**0.3.0**。可从默认分支安装，也可使用下文固定版本标签或完整 Release ZIP。
 
 一次建立完整文档分类，以后新增内容也能找到正确位置。不需要先选技术栈，不创建业务应用工程。
 
@@ -8,7 +8,7 @@
 - [详细使用说明](references/usage.md)
 - [已有项目迁移、备份与恢复](references/migration.md)
 - [版本变更](CHANGELOG.md)
-- [v0.1.0 下载与版本记录](https://github.com/wukongai/aef-docs-init/releases/tag/v0.1.0)
+- [v0.3.0 下载与版本记录](https://github.com/wukongai/aef-docs-init/releases/tag/v0.3.0)
 
 ## 解决什么
 
@@ -73,19 +73,19 @@ npx skills add wukongai/aef-docs-init --list
 
 `--list` 只列出可用 Skill，不安装。安装器本身可能由 npx 下载。
 
-需要固定使用首版：
+需要固定使用当前版本：
 
 ```bash
-npx skills add https://github.com/wukongai/aef-docs-init/tree/v0.1.0
+npx skills add https://github.com/wukongai/aef-docs-init/tree/v0.3.0
 ```
 
-这个地址固定到 v0.1.0 标签。安装器用法依据 [Skills 官方说明](https://github.com/vercel-labs/skills)。
+这个地址固定到 v0.3.0 标签。安装器用法依据 [Skills 官方说明](https://github.com/vercel-labs/skills)。
 
 安装完成后按宿主要求重新加载 Skill 或开启新会话，请 Agent 确认它能读取 `aef-docs-init/SKILL.md`。不同宿主的自动发现行为需要在你的环境中核验。
 
 ## 不用安装器：下载 ZIP
 
-1. 打开 [v0.1.0 Releases](https://github.com/wukongai/aef-docs-init/releases/tag/v0.1.0)，下载 `aef-docs-init-v0.1.0.zip`。
+1. 打开 [v0.3.0 Releases](https://github.com/wukongai/aef-docs-init/releases/tag/v0.3.0)，下载 [aef-docs-init-v0.3.0.zip](https://github.com/wukongai/aef-docs-init/releases/download/v0.3.0/aef-docs-init-v0.3.0.zip)。
 2. 解压，保留完整 `aef-docs-init/` 文件夹，不要只复制 SKILL.md；脚本、模板和说明都是依赖。
 3. 按宿主选择项目 `.agents/skills/aef-docs-init/` 或 `.claude/skills/aef-docs-init/`。希望跨项目使用时，改用该宿主明确的用户级安装位置。
 4. 检查最终路径直接包含 `aef-docs-init/SKILL.md`，避免多嵌套一层同名目录。已有同名 Skill 时先保留旧版并审阅差异，不直接覆盖。
