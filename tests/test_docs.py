@@ -76,7 +76,7 @@ class DocsTests(unittest.TestCase):
         self.run_cli("--route", "拟议规格", ok=False)
         self.run_cli("--route", "拟议规格", "--name", "../escape", ok=False)
         self.run_cli("--route", "不存在", ok=False)
-        self.run_cli("--route", "日报", "--name", "2026-10-08", "--validate-path", "docs/project/logs/daily/2026-10-08.md")
+        self.run_cli("--route", "日报", "--name", "2026-10-08", "--validate-path", "docs/project/logs/2026-10-08-daily.md")
         self.run_cli("--route", "日报", "--name", "2026-10-08", "--validate-path", "docs/knowledge/team/learning/2026-10-08.md", ok=False)
         self.assertFalse(self.target.exists())
 

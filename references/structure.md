@@ -6,7 +6,7 @@
 
 ## 初始化后的完整静态目录
 
-包括 docs 根在内，共 54 个文档目录；每个目录都有 README.md，以下树省略重复 README。默认另加 .aef/docs-layout.json 和两个可选 Agent 入口；不生成业务工程目录。
+包括 docs 根在内，共 51 个文档目录；每个目录都有 README.md，以下树省略重复 README。默认另加 .aef/docs-layout.json 和两个可选 Agent 入口；不生成业务工程目录。ideas.md、board.md 及业务正文只登记落点，实际需要时才写。
 
 ```text
 └── docs/
@@ -16,14 +16,11 @@
     │   ├── prd/
     │   └── releases/
     ├── project/
-    │   ├── backlog/
     │   ├── tasks/
     │   ├── sprints/
     │   ├── lifecycle/
     │   ├── meetings/
     │   ├── logs/
-    │   │   ├── daily/
-    │   │   └── weekly/
     │   └── handoffs/
     ├── engineering/
     │   ├── architecture/
@@ -67,7 +64,7 @@
 
 ## 全部内容落点
 
-以下 71 个文档类型完整登记。普通叶子文档按实际工作撰写，不填充假业务内容。尖括号表示实例：固定父目录已经建立，实例在需求、版本或变更真正发生时创建。
+以下 73 个文档类型完整登记。普通叶子文档按实际工作撰写，不填充假业务内容。尖括号表示实例：固定父目录已经建立，实例在需求、版本或变更真正发生时创建。同一文件可承载多个职责；需求发现与用户故事共用一份 story，故事卡 JSON 仅为按需机器接口。PRD 用于多个故事的整体产品方案。
 
 | 类型 | 对应路径 |
 |---|---|
@@ -76,8 +73,9 @@
 | 产品定位 | `docs/product/positioning.md` |
 | 路线图 | `docs/product/roadmap.md` |
 | 产品调研 | `docs/product/research/` |
-| 需求发现 | `docs/product/requirements/<需求名>/discovery.md` |
-| 用户故事 | `docs/product/requirements/<需求名>/user-story.md` |
+| 点子 | `docs/product/ideas.md` |
+| 需求发现 | `docs/product/requirements/<需求名>/story.md` |
+| 用户故事 | `docs/product/requirements/<需求名>/story.md` |
 | 故事卡 | `docs/product/requirements/<需求名>/story-card.json` |
 | 产品需求文档 | `docs/product/prd/` |
 | 发布导航 | `docs/product/releases/README.md` |
@@ -86,14 +84,15 @@
 | 发布说明 | `docs/product/releases/<版本>/release-notes.md` |
 | 发布验证 | `docs/product/releases/<版本>/verification.md` |
 | 版本回滚 | `docs/product/releases/<版本>/rollback.md` |
-| 待办 | `docs/project/backlog/` |
+| 看板 | `docs/project/board.md` |
+| 待办 | `docs/project/board.md` |
 | 任务 | `docs/project/tasks/` |
 | 迭代 | `docs/project/sprints/` |
 | 生命周期 | `docs/project/lifecycle/<周期>/` |
 | 风险 | `docs/project/risks.md` |
 | 会议 | `docs/project/meetings/` |
-| 日报 | `docs/project/logs/daily/` |
-| 周报 | `docs/project/logs/weekly/` |
+| 日报 | `docs/project/logs/` |
+| 周报 | `docs/project/logs/` |
 | 交接 | `docs/project/handoffs/` |
 | 工程导航 | `docs/engineering/README.md` |
 | 架构 | `docs/engineering/architecture/` |
@@ -145,3 +144,4 @@
 
 发布相关正文归 product/releases；工程文档归 docs/engineering，不等于创建业务应用工程。README 是用途与导航，初始化不意味着业务文件已完成。
 
+待办不带名称查看板，带名称查 tasks 中的任务正文；日志带名称自动补 -daily.md / -weekly.md 后缀。看板的列是状态，正文不随状态移动；状态以任务卡或外部看板为唯一来源，Sprint 和日志引用它。

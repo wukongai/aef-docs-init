@@ -16,6 +16,10 @@ RULE = """<!-- aef-docs-routing:v1 -->
 <!-- /aef-docs-routing:v1 -->
 """
 PRINCIPLES = """Product 记录产品事实和演进方向；Project 记录执行安排。发布归 product/releases，发布任务归 project/tasks。
+点子先记 product/ideas.md；明确用户、价值与验收后形成 requirements/<需求名>/story.md，需求背景写入同一故事。详细调研归 product/research。
+PRD 组织多个故事的产品方案，不要求每个故事另写 PRD。story-card.json 是按需机器接口，不要求人工重复维护。
+Project 看板入口为 board.md，需求池、待办、进行中、待验收、已完成是状态；具名待办正文归 tasks，状态流转不搬文件。
+任务卡或已采用的外部看板为状态唯一来源；board.md 仅作视图或链接入口，不再手工复制状态。日报、周报归 logs，以 -daily.md、-weekly.md 区分。
 CHANGELOG 记录 Unreleased 和工程版本变化，不写任务进度。Plan 写技术步骤并引用任务 ID，Sprint 和日报不复制任务状态。
 生命周期周期、版本和 Sprint 分开；阶段文档不冒充批准，机器阶段状态仍在 `.aef/lifecycle/<周期>/manifest.json`。
 变更包 spec 是拟议规格；验证和评审通过后更新生效规格。debug 加 diagnosis，优化加 optimization。
@@ -88,6 +92,16 @@ def route(contract, kind, name=None):
     path = contract["paths"][kind]
     if name is not None and (not re.fullmatch(r"[\w][\w.-]{0,119}", name) or ".." in name):
         raise ValueError("实例名称必须是安全的单个名称，禁止穿越和分隔符")
+    if kind == "待办" and name:
+        # 具名待办复用任务正文；不带名称时查询看板入口。
+        path = contract["paths"]["任务"]
+    if kind in ("日报", "周报") and name:
+        # 合并目录但保留类型后缀，防止同名日报和周报覆盖。
+        if name.endswith(".json"):
+            raise ValueError("日报、周报使用 Markdown 文件名")
+        stem = name.removesuffix(".md")
+        suffix = "-daily" if kind == "日报" else "-weekly"
+        name = stem + ("" if stem.endswith(suffix) else suffix) + ".md"
     if "<" in path:
         if not name:
             raise ValueError("该文档类型需要 --name 指定实例名称")
