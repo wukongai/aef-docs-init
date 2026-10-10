@@ -16,11 +16,13 @@ RULE = """<!-- aef-docs-routing:v1 -->
 <!-- /aef-docs-routing:v1 -->
 """
 PRINCIPLES = """Product 记录产品事实和演进方向；Project 记录执行安排。发布归 product/releases，发布任务归 project/tasks。
+产品五类产物：产品定义（product-definition.md）、用户与市场研究（research）、Epic/用户故事（requirements）、故事地图（story-map.md）、迭代计划（project/sprints）。
+定位是产品定义的一部分，定义还包含用户、价值、商业画布与指标；同一事实只维护一份正文。已有正文先读并审阅增量，职责冲突时保留原文并确认处理方案。
 点子先记 product/ideas.md；明确用户、价值与验收后形成 requirements/<需求名>/story.md，需求背景写入同一故事。详细调研归 product/research。
 PRD 组织多个故事的产品方案，不要求每个故事另写 PRD。story-card.json 是按需机器接口，不要求人工重复维护。
 Project 看板入口为 board.md，需求池、待办、进行中、待验收、已完成是状态；具名待办正文归 tasks，状态流转不搬文件。
 任务卡或已采用的外部看板为状态唯一来源；board.md 仅作视图或链接入口，不再手工复制状态。日报、周报归 logs，以 -daily.md、-weekly.md 区分。
-CHANGELOG 记录 Unreleased 和工程版本变化，不写任务进度。Plan 写技术步骤并引用任务 ID，Sprint 和日报不复制任务状态。
+CHANGELOG 记录 Unreleased 和工程版本变化，不写任务进度。Plan 写技术步骤并引用任务 ID；Sprint 承载本轮目标、故事承诺、依赖与结果，可引用执行任务，Sprint 和日报不复制任务状态。
 生命周期周期、版本和 Sprint 分开；阶段文档不冒充批准，机器阶段状态仍在 `.aef/lifecycle/<周期>/manifest.json`。
 变更包 spec 是拟议规格；验证和评审通过后更新生效规格。debug 加 diagnosis，优化加 optimization。
 通用部署/回滚手册在 engineering/maintenance/runbooks；具体版本回滚证据在 product/releases。

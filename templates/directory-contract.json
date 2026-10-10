@@ -3,7 +3,8 @@
   "paths": {
     "导航": "docs/README.md",
     "项目原则": "docs/constitution.md",
-    "产品定位": "docs/product/positioning.md",
+    "产品定义": "docs/product/product-definition.md",
+    "故事地图": "docs/product/story-map.md",
     "路线图": "docs/product/roadmap.md",
     "产品调研": "docs/product/research/",
     "点子": "docs/product/ideas.md",

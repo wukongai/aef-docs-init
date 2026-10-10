@@ -64,13 +64,14 @@
 
 ## 全部内容落点
 
-以下 73 个文档类型完整登记。普通叶子文档按实际工作撰写，不填充假业务内容。尖括号表示实例：固定父目录已经建立，实例在需求、版本或变更真正发生时创建。同一文件可承载多个职责；需求发现与用户故事共用一份 story，故事卡 JSON 仅为按需机器接口。PRD 用于多个故事的整体产品方案。
+以下 74 个文档类型完整登记。普通叶子文档按实际工作撰写，不填充假业务内容。尖括号表示实例：固定父目录已经建立，实例在需求、版本或变更真正发生时创建。同一文件可承载多个职责；产品定义仅使用 product-definition.md，需求发现与用户故事共用一份 story，故事卡 JSON 仅为按需机器接口。PRD 用于多个故事的整体产品方案。
 
 | 类型 | 对应路径 |
 |---|---|
 | 导航 | `docs/README.md` |
 | 项目原则 | `docs/constitution.md` |
-| 产品定位 | `docs/product/positioning.md` |
+| 产品定义 | `docs/product/product-definition.md` |
+| 故事地图 | `docs/product/story-map.md` |
 | 路线图 | `docs/product/roadmap.md` |
 | 产品调研 | `docs/product/research/` |
 | 点子 | `docs/product/ideas.md` |

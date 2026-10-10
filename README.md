@@ -1,10 +1,10 @@
 # AEF Docs Init
 
-独立的项目文档初始化、历史资料迁移与落点查询 Skill。当前版本：**0.3.0**。可从默认分支安装，也可使用下文固定版本标签或完整 Release ZIP。
+独立的项目文档初始化、历史资料迁移与落点查询 Skill。当前源码版本：**0.3.2（未创建对应 Release）**。使用 [main 完整源码 ZIP](https://github.com/wukongai/aef-docs-init/archive/refs/heads/main.zip)，解压后核对 skill.contract.yaml 为 0.3.2。下文 v0.3.0 历史发行包不包含产品定义与故事地图类型；本轮测试请使用当前完整源码包。
 
 一次建立完整文档分类，以后新增内容也能找到正确位置。不需要先选技术栈，不创建业务应用工程。
 
-- [完整目录树与 73 类落点](references/structure.md)
+- [完整目录树与 74 类落点](references/structure.md)
 - [详细使用说明](references/usage.md)
 - [已有项目迁移、备份与恢复](references/migration.md)
 - [版本变更](CHANGELOG.md)
@@ -44,6 +44,7 @@ aef-docs-init/
     ├── test_docs.py
     ├── test_migration.py
     ├── test_simplification.py
+    ├── test_product_alignment.py
     ├── self-test.json
     └── fixtures/
         ├── directories.json
@@ -73,7 +74,7 @@ npx skills add wukongai/aef-docs-init --list
 
 `--list` 只列出可用 Skill，不安装。安装器本身可能由 npx 下载。
 
-需要固定使用当前版本：
+需要复现旧版 v0.3.0（不含本轮修复）：
 
 ```bash
 npx skills add https://github.com/wukongai/aef-docs-init/tree/v0.3.0
@@ -85,7 +86,7 @@ npx skills add https://github.com/wukongai/aef-docs-init/tree/v0.3.0
 
 ## 不用安装器：下载 ZIP
 
-1. 打开 [v0.3.0 Releases](https://github.com/wukongai/aef-docs-init/releases/tag/v0.3.0)，下载 [aef-docs-init-v0.3.0.zip](https://github.com/wukongai/aef-docs-init/releases/download/v0.3.0/aef-docs-init-v0.3.0.zip)。
+1. 本轮使用 [main 完整源码 ZIP](https://github.com/wukongai/aef-docs-init/archive/refs/heads/main.zip)，解压后核对版本为 0.3.2。仅复现旧版时，使用 [v0.3.0 历史发行包](https://github.com/wukongai/aef-docs-init/releases/download/v0.3.0/aef-docs-init-v0.3.0.zip)。
 2. 解压，保留完整 `aef-docs-init/` 文件夹，不要只复制 SKILL.md；脚本、模板和说明都是依赖。
 3. 按宿主选择项目 `.agents/skills/aef-docs-init/` 或 `.claude/skills/aef-docs-init/`。希望跨项目使用时，改用该宿主明确的用户级安装位置。
 4. 检查最终路径直接包含 `aef-docs-init/SKILL.md`，避免多嵌套一层同名目录。已有同名 Skill 时先保留旧版并审阅差异，不直接覆盖。
@@ -147,7 +148,7 @@ python3 -B scripts/docs_init.py --target /path/to/project --route 拟议规格 -
 ## 你会得到什么
 
 - 包含 docs 根在内的 51 个静态目录，每个目录都有 README 用途说明。
-- 73 类文档的统一索引，覆盖产品、执行、工程文档、商业、客户成功和知识；类别可共用文件，无需逐类写一份。
+- 74 类文档的统一索引，覆盖产品、执行、工程文档、商业、客户成功和知识；类别可共用文件，无需逐类写一份。
 - `.aef/docs-layout.json` 独立机器合同；不覆盖现有 `.aef/profile.json`。
 - 按选择生成的根 Agent 文档路由规则；选择 none 时不会接入自动读取。
 
@@ -156,6 +157,10 @@ python3 -B scripts/docs_init.py --target /path/to/project --route 拟议规格 -
 0.3.0 的日常主线是：点子池 → 一份用户故事 → 看板任务流转。PRD 按跨故事方案需要撰写，故事卡 JSON 按自动化需要保留；日报周报共用 logs。六领域及技术架构、选型、方案、测试分类保留。旧项目需审阅迁移，不会自动合并或删除旧正文。
 
 ## 常见问题
+
+**与产品 Skill 的五类文档如何对应？** 产品定义 → `docs/product/product-definition.md`；用户与市场研究 → `docs/product/research/`；Epic/用户故事 → `docs/product/requirements/<需求名>/story.md`；故事地图 → `docs/product/story-map.md`；迭代计划 → `docs/project/sprints/`。只初始化位置与导航，业务正文由产品 Skill 逐步形成。
+
+**旧 0.3.0 项目能直接使用新合同吗？** 新增产品定义与故事地图类型后，旧合同会按原规则阻断漂移。需预览并审阅合同/导航升级，不直接覆盖；已有 positioning.md 的正文职责也应先核对。本轮不自动迁移任何真实项目。
 
 **已有 docs 能用吗？** 可以。初始化仍不覆盖差异；要整理旧结构，使用独立迁移动作。迁移先逐文件审阅、外部备份，批准后搬迁与修复引用。同名正文差异需人工合并，分类含糊先澄清。
 
@@ -175,6 +180,6 @@ python3 -B scripts/docs_init.py --target /path/to/project --route 拟议规格 -
 
 分发包只包含本目录所列文件；不要打包 owner 仓库、状态记录、内部评审、用户绝对路径或真实项目。本版本未附加 LICENSE 文件。
 
-默认不联网、不装依赖、不写入。迁移需用户批准具体范围，允许修复 profile 和生命周期 manifest 中的路径引用，不改变状态和审批结论。旧 adapter/harness 的兼容性另行评估。通用归档框架不是业务内容模板，不会替用户写出产品定位或宪法。
+默认不联网、不装依赖、不写入。迁移需用户批准具体范围，允许修复 profile 和生命周期 manifest 中的路径引用，不改变状态和审批结论。旧 adapter/harness 的兼容性另行评估。通用归档框架不是业务内容模板，不会替用户写出产品定义或宪法。
 
 自动化测试只证明确定性行为；真实项目试用、宿主发现与实际文档归档效果需要单独验证。无全局升级和自动发布动作。

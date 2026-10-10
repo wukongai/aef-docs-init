@@ -1,6 +1,6 @@
 name: aef-docs-init
 kind: workflow
-version: 0.3.0
+version: 0.3.2
 scope: project-only-or-explicit-user-install
 inputs: [target, agent, document_kind, instance_name, approval_fingerprint, migration_decisions, reference_includes, external_backup]
 outputs: [full_static_docs_tree, directory_index, machine_contract, routing_rules, route_result, check_report, migration_inventory, file_trace, backup_record, recovery_preview]
@@ -15,7 +15,7 @@ approvals:
   formal_creation: native_plan_approval
   publication: separate_owner_approval
 scripts: [scripts/docs_init.py, scripts/layout.py, scripts/safe_files.py, scripts/docs_migrate.py, scripts/migration_inventory.py, scripts/migration_plan.py, scripts/migration_refs.py, scripts/migration_store.py]
-tests: [tests/test_docs.py, tests/test_migration.py, tests/test_simplification.py, tests/self-test.json]
+tests: [tests/test_docs.py, tests/test_migration.py, tests/test_simplification.py, tests/test_product_alignment.py, tests/self-test.json]
 evaluation:
   deterministic: fixture_and_portability_tests
   cases:
