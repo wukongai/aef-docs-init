@@ -54,17 +54,19 @@ aef-docs-init/
 
 所有依赖都在此目录内；scripts 是 Skill 自身的实现，不会复制成目标项目的工程 scripts 目录。
 
+完整图文操作说明见 [安装与使用手册](docs/user-manual.zh-CN.md)。
+
 ## 快速安装：普通使用者
 
 需要 Python 3.9 或更新版本，仅标准库。当前测试环境为 macOS；其他平台尚未实测，不宣称已验证兼容。
 
-使用安装器还需要 Node.js/npm。在你希望使用 Skill 的项目终端运行：
+使用安装器还需要 Node.js/npm。打开终端，为本机 Codex 安装：
 
 ```bash
-npx skills add wukongai/aef-docs-init
+npx skills add wukongai/aef-docs-init --skill aef-docs-init --agent codex --global
 ```
 
-`npx` 运行 Skills 安装器；`skills add` 从指定仓库安装；`wukongai/aef-docs-init` 是本仓库。按交互提示选择 `aef-docs-init`、你的 Agent，以及项目级或用户级范围。初次使用建议项目级；不要不加区分地安装到所有宿主。
+`npx` 运行 Skills 安装器；`skills add` 从指定仓库安装；`wukongai/aef-docs-init` 是本仓库。`--skill` 选择本 Skill，`--agent codex` 指定 Codex，`--global` 安装到用户级目录供本机各项目使用；按提示确认，安装器自动下载和放置文件。Claude Code 用户换成 `--agent claude-code`；只用于当前项目则进入该项目并去掉 `--global`。电脑还需 Git；私有仓库需访问权限及本机认证。已有同名目录或个人修改时先保留旧版，不直接覆盖。
 
 只想先查看仓库中可用 Skill：
 
