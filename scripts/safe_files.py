@@ -2,6 +2,7 @@
 import hashlib
 from pathlib import Path
 from layout import encode, RULE
+from entry_coexist import ENTRIES, append_rule, baseline_block, has_rule, preserve_navigation
 
 
 def target_path(raw):
@@ -33,13 +34,15 @@ def child(root, relative):
 
 
 def regular_text(path):
-    """检查类型后读取，避免管道阻塞或目录读取。"""
+    """拒绝非常规文件和硬链接，再按原字节解码，绝不转换换行。"""
     if not path.is_file():
         raise ValueError("预期普通文件：" + path.name)
-    return path.read_text(encoding="utf-8")
+    if path.stat().st_nlink != 1:
+        raise ValueError("不读取硬链接文件：" + path.name)
+    return path.read_bytes().decode("utf-8")
 
 
-def plan(root, files):
+def plan(root, files, adopt_agent=False):
     """绑定所有预期文件、目标和实际状态；任何冲突阻断。"""
     files = dict(files)
     states = {}
@@ -47,7 +50,17 @@ def plan(root, files):
         path = child(root, relative)
         if path.exists():
             current = regular_text(path)
-            if relative in ("AGENTS.md", "CLAUDE.md") and RULE in current:
+            if relative in ENTRIES:
+                baseline_block(current)
+                if has_rule(current):
+                    files[relative] = current
+                elif current != content and adopt_agent:
+                    files[relative] = append_rule(current)
+                    states[relative] = "update"
+                    continue
+                elif current != content:
+                    raise ValueError("已有入口差异；需显式 --adopt-agent 预览采用：" + relative)
+            elif preserve_navigation(relative, current, content):
                 files[relative] = current
             elif current != content:
                 raise ValueError("已有差异，整批未写入：" + relative)
@@ -56,13 +69,25 @@ def plan(root, files):
     return files, states, fingerprint
 
 
-def apply(root, files, states, written):
-    """排他新增；失败保留现场和已写清单，不自动删除。"""
-    for relative, content in files.items():
-        if states[relative] == "unchanged":
-            continue
-        path = child(root, relative)
-        path.parent.mkdir(parents=True, exist_ok=True)
-        with path.open("x", encoding="utf-8") as handle:
-            written.append(relative)
-            handle.write(content)
+def apply(root, files, states, written, backup=None, fingerprint=None):
+    """新增使用排他写；更新先备份，失败保留现场及明确恢复指针。"""
+    from agent_adoption import prepare_backup, update_entry
+    saved, record = prepare_backup(root, files, states, backup, fingerprint)
+    try:
+        for relative, content in files.items():
+            if states[relative] == "unchanged":
+                continue
+            if states[relative] == "update":
+                update_entry(root, relative, content, saved, record)
+                written.append(relative)
+                continue
+            path = child(root, relative)
+            path.parent.mkdir(parents=True, exist_ok=True)
+            with path.open("x", encoding="utf-8") as handle:
+                written.append(relative)
+                handle.write(content)
+    except (ValueError, OSError) as error:
+        if saved:
+            raise ValueError('采用未完成；入口恢复备份：' + str(saved) + '；原因：' + str(error)) from error
+        raise
+    return str(saved) if saved else None

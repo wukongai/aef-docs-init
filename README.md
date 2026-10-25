@@ -1,6 +1,8 @@
 # AEF Docs Init
 
-独立的项目文档初始化、历史资料迁移与落点查询 Skill。当前源码版本：**0.3.2（未创建对应 Release）**。使用 [main 完整源码 ZIP](https://github.com/wukongai/aef-docs-init/archive/refs/heads/main.zip)，解压后核对 skill.contract.yaml 为 0.3.2。下文 v0.3.0 历史发行包不包含产品定义与故事地图类型；本轮测试请使用当前完整源码包。
+本目录为文档与工程基线关联同步的独立研发候选，尚未封版、安装或发布。候选新增已有根入口的 `--adopt-agent` 具体预览、同指纹采用、外部备份与 `--recover-agent` 入口恢复；CLI 用法与并存边界见 [使用说明](references/usage.md)。下列 0.3.2 下载和安装资料记录来源基线，不代表本候选已在远端提供。
+
+独立的项目文档初始化、历史资料迁移与落点查询 Skill。本目录是**0.3.3独立候选**，增加工程基线并存、入口显式采用和外部备份恢复；尚未正式安装或发布。远端main和下文历史发行入口不代表本候选内容，本轮试用应使用当前完整候选包。
 
 一次建立完整文档分类，以后新增内容也能找到正确位置。不需要先选技术栈，不创建业务应用工程。
 
@@ -35,6 +37,8 @@ aef-docs-init/
 │   ├── docs_init.py
 │   ├── layout.py
 │   ├── safe_files.py
+│   ├── entry_coexist.py
+│   ├── agent_adoption.py
 │   ├── docs_migrate.py
 │   ├── migration_inventory.py
 │   ├── migration_plan.py
@@ -45,6 +49,7 @@ aef-docs-init/
     ├── test_migration.py
     ├── test_simplification.py
     ├── test_product_alignment.py
+    ├── test_coexist.py
     ├── self-test.json
     └── fixtures/
         ├── directories.json
@@ -101,7 +106,7 @@ GitHub 的 Code → Download ZIP 也能下载源码，但可能对应更新后�
 
 > 使用 aef-docs-init，为当前项目初始化完整文档目录。先展示目录和文件预览，保留已有资料，等我确认后再写入。只接入当前使用的 Agent。
 
-如果项目不是当前目录，明确告诉 Agent 目标路径。它会先预览，再等你批准。遇到已有 README 或规则冲突会停止，不会覆盖。
+如果项目不是当前目录，明确告诉 Agent 目标路径。它会先预览，再等你批准。遇到已有 README 或规则冲突会停止；已有根入口可显式采用并在外部备份后追加规则，详情见使用说明。
 
 已有项目整理，可以这样说：
 
@@ -177,6 +182,8 @@ python3 -B scripts/docs_init.py --target /path/to/project --route 拟议规格 -
 源码学习或二次开发才需要 clone/fork。普通使用者按前面的安装步骤即可。
 
 运行 `python3 -B -m unittest discover -s tests -v`，包括首版 13 项回归和新增迁移测试，验证全目录、路由、冲突、幂等、引用、备份、故障恢复和安全边界。所有写入仅在临时 fixture；测试通过不等于所有宿主或真实项目效果均已验证。
+
+候选额外包含 `tests/test_coexist.py` 的根入口采用、完整字节保留、导航附加块、外部备份、恢复漂移与故障注入回归；原 74 类合同及所有旧回归保留。
 
 ## 发布范围与限制
 

@@ -1,0 +1,155 @@
+{
+  "version": "0.3.3",
+  "files": [
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 3816,
+      "sha256": "b69b3baa1e7e168ca8849296a7c41d2e8b62d387b8a3c0e09389c56bc738a1ab"
+    },
+    {
+      "path": "README.md",
+      "bytes": 11773,
+      "sha256": "ef6f6022d1888c3d338fd195c7cc503816368c266f3cc9ac1aae8cb0ac82ed2c"
+    },
+    {
+      "path": "SKILL.md",
+      "bytes": 7949,
+      "sha256": "47ecfbd2a2414c079d610fb31e8233d21a8aaacba1f1c661ce333bb1a705772c"
+    },
+    {
+      "path": "docs/issues/2026-10-10-unify-definition-doc-naming.md",
+      "bytes": 389,
+      "sha256": "96fa443c835dc0f730a05880c4c86f5e42de2f7d9da90b50ddc4228c25c39335"
+    },
+    {
+      "path": "docs/user-manual.zh-CN.md",
+      "bytes": 12169,
+      "sha256": "23b7c4348f2111593a8e0fc7a46a3b6c5af925bb00be734598b67cb1f98b0aa5"
+    },
+    {
+      "path": "references/migration.md",
+      "bytes": 8005,
+      "sha256": "5825380fb3b1fe1a29ed9b631491b19703405095ef20588ef68d5711a6701b42"
+    },
+    {
+      "path": "references/structure.md",
+      "bytes": 7076,
+      "sha256": "36e386e6c0948f9e17ee7c138bbb81ba163ad62402ddb478c8482c6ab36609d5"
+    },
+    {
+      "path": "references/usage.md",
+      "bytes": 9341,
+      "sha256": "c071cbf84020de2e55b6ba082723c6f19390af76ada90be81b1512f1cb27d50a"
+    },
+    {
+      "path": "scripts/agent_adoption.py",
+      "bytes": 6634,
+      "sha256": "844eda765a6cb58ba37ad19aa8d8c0e30db711247517ecbce76ae97b4d16003f"
+    },
+    {
+      "path": "scripts/docs_init.py",
+      "bytes": 4754,
+      "sha256": "d8a3f20217c213469e93d97b71f54cac987d6ba362f95d92fde824caa9262005"
+    },
+    {
+      "path": "scripts/docs_migrate.py",
+      "bytes": 2644,
+      "sha256": "317d67984dbf8705f399e7c841ecb0bbf8be3b528408b63f97dcdc56573a9d9d"
+    },
+    {
+      "path": "scripts/entry_coexist.py",
+      "bytes": 2375,
+      "sha256": "3ef66d9e3db04949a5a94d606746671c1ddc18844dee748a1e4b8a7803df024c"
+    },
+    {
+      "path": "scripts/layout.py",
+      "bytes": 7445,
+      "sha256": "ab4d2650bcd8af3502baee8e76be721df50145668fa7310cb8d26bdb0bfc0ddc"
+    },
+    {
+      "path": "scripts/migration_inventory.py",
+      "bytes": 3513,
+      "sha256": "710dcc4705b53f22bf8b7c6c498420ce361deb3289502c344c3a6dc778802215"
+    },
+    {
+      "path": "scripts/migration_plan.py",
+      "bytes": 8230,
+      "sha256": "8d43a2bdb79bcf8c26726c871bd38a07f51b556a3f1d95d325ae8a14bdc53a1d"
+    },
+    {
+      "path": "scripts/migration_refs.py",
+      "bytes": 4503,
+      "sha256": "cf437a26c0c81e77f5cf10b3c877c3aae695b4bab3bd01b457a2123ac8e644c5"
+    },
+    {
+      "path": "scripts/migration_store.py",
+      "bytes": 7869,
+      "sha256": "cc9a8e010af513823c8669fe3d668cf4dd78df67b4846e16d1d17e4e88248f8c"
+    },
+    {
+      "path": "scripts/safe_files.py",
+      "bytes": 4061,
+      "sha256": "c52847bbc03ee53a30c8b6c6a20bed48fa2358cf26136a89623f9ae53b53106d"
+    },
+    {
+      "path": "skill.contract.yaml",
+      "bytes": 2227,
+      "sha256": "a608b7d7e451fbd829ef75b6a9d56cc6d5f91ed5b6819228f24bbd4b5d8903f3"
+    },
+    {
+      "path": "templates/directory-contract.json",
+      "bytes": 4088,
+      "sha256": "e70d893a53db28aad0db531d851689615ed4d456d03fdf279d03900ffd6f9587"
+    },
+    {
+      "path": "templates/migration-policy.json",
+      "bytes": 243,
+      "sha256": "307125c631576be9408dcdde06e8ea212261f5e6bf16043a07e6780e34187680"
+    },
+    {
+      "path": "tests/fixtures/directories.json",
+      "bytes": 1547,
+      "sha256": "39b3b9e632d64133a3e023cb41da0eb3eeba21c7e4fe5ba80b9e1434cf3982b2"
+    },
+    {
+      "path": "tests/fixtures/preserved-routes.json",
+      "bytes": 2584,
+      "sha256": "4cb2e62a87043363eb2e1bbfc12c757dd91428f4b13038d65263e431d4f8078d"
+    },
+    {
+      "path": "tests/fixtures/routes.json",
+      "bytes": 422,
+      "sha256": "577e4e4ce4202ad951e1bb4c48b21d601748553f7dcca05667524f649369219f"
+    },
+    {
+      "path": "tests/self-test.json",
+      "bytes": 670,
+      "sha256": "7b515fe6497e68fa17db5de7071d89df60cd5f148d85d03c6f811e2a029b3de9"
+    },
+    {
+      "path": "tests/test_coexist.py",
+      "bytes": 13219,
+      "sha256": "7cb0f5fba9b219574125361e78046f03749e1eb3a9a32f1dd3ac581db9daf1c7"
+    },
+    {
+      "path": "tests/test_docs.py",
+      "bytes": 8097,
+      "sha256": "3c7fde6958e879fdcf670780ac4f70ea665a924d24eac16280fffa1af3d1fe2e"
+    },
+    {
+      "path": "tests/test_migration.py",
+      "bytes": 12538,
+      "sha256": "232c860bf84c80aa07dc2f1cb5b76b0d49f2b48197d554971291602e151c79cf"
+    },
+    {
+      "path": "tests/test_product_alignment.py",
+      "bytes": 3424,
+      "sha256": "e84cfdaa6f2bb7c706d7848113c9625d5f08ce420ce9a465383ac55405d92516"
+    },
+    {
+      "path": "tests/test_simplification.py",
+      "bytes": 3643,
+      "sha256": "504ab55918370d9b6a8842aa4fbbdd48793e4d01c89e3af91d3e58f3ff0b3f56"
+    }
+  ]
+}
