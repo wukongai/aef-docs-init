@@ -1,0 +1,34 @@
+name: aef-docs-init
+kind: workflow
+version: 0.3.3
+scope: project-only-or-explicit-user-install
+inputs: [target, agent, adopt_agent, recover_agent, document_kind, instance_name, approval_fingerprint, migration_decisions, reference_includes, external_backup]
+outputs: [full_static_docs_tree, directory_index, machine_contract, routing_rules, route_result, check_report, agent_adoptions, external_blocks_unverified, migration_inventory, file_trace, backup_record, recovery_preview]
+state: [scan, preview, applied, checked, route, path_valid, blocked, verified, already_migrated, recovery_preview, recovered]
+stops: [ambiguous_kind, missing_name, missing_approval, stale_plan, conflicting_file, unsafe_path, write_failure, unknown_reference, damaged_backup, recovery_drift]
+delegates: []
+forbidden: [business_scaffold, unapproved_overwrite, automatic_classification, automatic_gate_approval, credential_storage, network, automatic_install, publish]
+approvals:
+  initialization: explicit_user_approval_for_same_preview
+  agent_adoption: explicit_user_approval_for_same_preview_and_external_verified_backup
+  migration: explicit_user_approval_for_same_file_mapping_and_retirement_preview
+  recovery: explicit_user_approval_for_same_recovery_preview
+  formal_creation: native_plan_approval
+  publication: separate_owner_approval
+scripts: [scripts/docs_init.py, scripts/layout.py, scripts/safe_files.py, scripts/entry_coexist.py, scripts/agent_adoption.py, scripts/docs_migrate.py, scripts/migration_inventory.py, scripts/migration_plan.py, scripts/migration_refs.py, scripts/migration_store.py]
+tests: [tests/test_docs.py, tests/test_migration.py, tests/test_simplification.py, tests/test_product_alignment.py, tests/test_coexist.py, tests/self-test.json]
+evaluation:
+  deterministic: fixture_and_portability_tests
+  cases:
+    - kind: success
+      path: tests/test_migration.py
+    - kind: failure
+      path: tests/test_migration.py
+    - kind: high_risk
+      path: tests/test_migration.py
+  type_checks: [positive_routing, negative_routing, fallback, aggregation, cross_stage_io, partial_failure]
+  baseline: tests/test_docs.py
+  holdout: false
+  negative_transfer: tests/test_docs.py
+  real_task: pending
+  utility_claim: false

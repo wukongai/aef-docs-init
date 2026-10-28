@@ -1,0 +1,6 @@
+{
+  "schema": "aef-docs-migration-policy/v1",
+  "denied_path_names": [".git", ".env"],
+  "denied_path_prefixes": [".env."],
+  "reason": "拒绝扫描版本库内部与凭证文件；不读取环境变量、Keychain 或任何凭证来源。"
+}
